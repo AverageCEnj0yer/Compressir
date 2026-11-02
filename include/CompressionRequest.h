@@ -1,39 +1,31 @@
-#ifndef COMPRESSIONREQUEST_H
-#define COMPRESSIONREQUEST_H
+#ifndef COMPRESSION_REQUEST_H
+#define COMPRESSION_REQUEST_H
 
+#include <filesystem>
 #include <vector>
-#include <string>
 #include <cstdint>
 
-//later to define enums with possibilities here for compression algorithm, level and format.
-class CompressionRequest
-{   
-    using fileNames = std::vector<std::string>;
-    private:
-    fileNames m_files{};
-    std::string m_outPath{};
-    std::string m_compressionAlgorithm{};
-    std::uint8_t m_compressionLevel{};
-    std::string m_archiveFormat{};
+enum class CompressionAlgorithm {
+    RLE,
+    Huffman
+};
 
-    public:
-    CompressionRequest(
-        fileNames files,
-        std::string outPath,
-        std::string compressionAlgorithm,
-        uint8_t compressionLevel,
-        std::string archiveFormat
-    ) : m_files{files}, m_outPath{outPath}, m_compressionAlgorithm{compressionAlgorithm},
-        m_compressionLevel{compressionLevel}, m_archiveFormat{archiveFormat} {};
+enum class Operation {
+    Compress,
+    Decompress
+};
 
-    CompressionRequest() = default; //temporary for testing purposes
+struct CompressionRequest {
+    Operation operation{Operation::Compress};
 
-    //getters
-    const fileNames& getFiles() const { return m_files; }
-    const std::string& getOutPath() const { return m_outPath; }
-    const std::string& getCompressionAlgorithm() const { return m_compressionAlgorithm; }
-    std::uint8_t getCompressionLevel() const { return m_compressionLevel; }
-    const std::string& getArchiveFormat() const { return m_archiveFormat; }
+    std::vector<std::filesystem::path> files{};
+    std::filesystem::path outputPath{};
+
+    CompressionAlgorithm algorithm{CompressionAlgorithm::RLE};
+    std::uint8_t compressionLevel{1};
+
+    // TODO: Add archive format selection when needed.
+    // TODO: Validate the request before executing it.
 };
 
 #endif

@@ -1,32 +1,41 @@
 #ifndef ARCHIVER_H
 #define ARCHIVER_H
 
-#include <initializer_list>
-#include <string_view>
+#include "ArchiveEntry.h"
+
 #include <vector>
 #include <cstddef>
 #include <iostream>
 
-class Archiver
-{
-    private:
-    using File = std::vector<std::byte>;
-    
-    std::vector<File> m_files{};
+class Archiver {
+public:
+    std::vector<std::byte> pack(
+        const std::vector<ArchiveEntry>& entries
+    ) {
+        // TODO: Serialize archive header.
+        // TODO: Serialize each entry's metadata.
+        // TODO: Append compressed file contents.
+        // TODO: Return complete archive bytes.
 
-    public:
-    Archiver() = default;
-    Archiver(std::initializer_list<File> files) : m_files{files} {};
+        std::cout << "Packing "
+                  << entries.size()
+                  << " files into an archive...\n";
 
-    void add(File file)
-    {
-        m_files.push_back(file);
+        return {};
     }
 
-    void archive(std::string_view archiveName)
-    {
-        //archiver logic to be added here.
-        std::cout << "Archived " << m_files.size() << " files in " << archiveName;
+    std::vector<ArchiveEntry> unpack(
+        [[maybe_unused]]const std::vector<std::byte>& archiveData
+    ) {
+        // TODO: Parse archive header.
+        // TODO: Read individual archive entries.
+        // TODO: Recover filenames and metadata.
+        // TODO: Return compressed entries.
+        // TODO: Reject corrupted archive structures.
+
+        std::cout << "Unpacking archive structure...\n";
+
+        return {};
     }
 };
 

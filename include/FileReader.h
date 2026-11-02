@@ -1,22 +1,21 @@
-#ifndef FILEREADER_H
-#define FILEREADER_H
+#ifndef FILE_READER_H
+#define FILE_READER_H
 
 #include "IReader.h"
-#include <string>
 #include <iostream>
 
-//reading files from a directory
-class FileReader : public IReader
-{
-    private:
-    std::string directory{};
+class FileReader : public IReader {
+public:
+    std::vector<std::byte> readData(
+        const std::filesystem::path& path
+    ) override {
+        // TODO: Open file in binary mode.
+        // TODO: Read and return its bytes.
+        // TODO: Handle file reading errors.
 
-    public:
-    bool readData() override 
-    {
-        //placeholder
-        std::cout << "reading data\n";
-        return true;
+        std::cout << "Reading: " << path << '\n';
+
+        return {};
     }
 };
 

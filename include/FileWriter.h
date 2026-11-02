@@ -1,22 +1,22 @@
-#ifndef FILEWRITER_H
-#define FILEWRITER_H
+#ifndef FILE_WRITER_H
+#define FILE_WRITER_H
 
 #include "IWriter.h"
-#include <string>
 #include <iostream>
 
-//reading files from a directory
-class FileWriter : public IWriter
-{
-    private:
-    std::string directory{};
+class FileWriter : public IWriter {
+public:
+    bool writeData(
+        const std::filesystem::path& path,
+        [[maybe_unused]] const std::vector<std::byte>& data
+    ) override {
+        // TODO: Open/create output file in binary mode.
+        // TODO: Write provided bytes.
+        // TODO: Handle writing errors.
 
-    public:
-    bool writeData() override 
-    {
-        //placeholder
-        std::cout << "Writing data\n";
-        return true;
+        std::cout << "Writing: " << path << '\n';
+
+        return true; // Placeholder only.
     }
 };
 

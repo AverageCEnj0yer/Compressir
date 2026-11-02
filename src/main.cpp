@@ -1,6 +1,9 @@
+#include "Application.h"
 
+int main() {
+    Application app{"compress main.cpp -o packed.myzip"};
 
-int main()
-{
+    app.run();
+
     return 0;
 }

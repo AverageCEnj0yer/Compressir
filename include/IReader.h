@@ -1,14 +1,17 @@
 #ifndef IREADER_H
 #define IREADER_H
 
-#include <string_view>
+#include <filesystem>
+#include <vector>
+#include <cstddef>
 
-class IReader
-{
-    public:
-    virtual bool readData() = 0;
-
+class IReader {
+public:
     virtual ~IReader() = default;
+
+    virtual std::vector<std::byte> readData(
+        const std::filesystem::path& path
+    ) = 0;
 };
 
 #endif
