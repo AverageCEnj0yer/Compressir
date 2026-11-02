@@ -13,7 +13,7 @@ public:
     );
 
     std::vector<ArchiveEntry> unpack(
-        [[maybe_unused]]const std::vector<std::byte>& archiveData
+        const std::vector<std::byte>& archiveData
     );
 };
 

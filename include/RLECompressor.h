@@ -6,11 +6,11 @@
 class RLECompressor : public ICompressionAlgorithm {
 public:
     std::vector<std::byte> compress(
-        [[maybe_unused]]const std::vector<std::byte>& data
+        const std::vector<std::byte>& data
     ) override;
 
     std::vector<std::byte> decompress(
-        [[maybe_unused]]const std::vector<std::byte>& data
+        const std::vector<std::byte>& data
     ) override;
 
     CompressionAlgorithm algorithmType() const override;
