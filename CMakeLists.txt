@@ -7,9 +7,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-function(add_source target path)
+function(add_source target)
 
-    add_executable(${target} ${path})
+    add_executable(${target} ${ARGN})
 
     target_include_directories(${target} PRIVATE include)
 
@@ -23,7 +23,16 @@ function(add_source target path)
         -Wsign-conversion
         -Wnull-dereference
     )
-
 endfunction()
 
-add_source(main src/main.cpp)
+add_source(main
+    src/main.cpp
+    src/Application.cpp
+    src/Application.cpp
+    src/Archiver.cpp
+    src/CompressionService.cpp
+    src/FileReader.cpp
+    src/FileWriter.cpp
+    src/HuffmanCompressor.cpp
+    src/RLECompressor.cpp
+)
