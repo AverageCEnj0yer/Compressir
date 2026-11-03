@@ -22,6 +22,7 @@ struct CompressionRequest {
     std::filesystem::path outputPath{};
 
     CompressionAlgorithm algorithm{CompressionAlgorithm::RLE};
+    bool automaticAlgorithmSelection{true};
     std::uint8_t compressionLevel{1};
 
     // TODO: Add archive format selection when needed.

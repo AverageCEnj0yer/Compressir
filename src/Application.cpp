@@ -1,9 +1,6 @@
 #include <Application.h>
 
-#include "RLECompressor.h"
-#include "HuffmanCompressor.h"
-#include "FileReader.h"
-#include "FileWriter.h"
+#include "CompressionRequestBuilder.h"
 #include "Archiver.h"
 
 #include <memory>
@@ -17,38 +14,24 @@ Application::Application(std::string_view command)
 
 
 CompressionService Application::createService(
-        const CompressionRequest& request
+        const IIOFactory& ioFactory
     ) {
-        // TODO: Move construction logic into a factory
-        // when introducing design patterns.
-
-        std::unique_ptr<ICompressionAlgorithm> compressor;
-
-        switch (request.algorithm) {
-            case CompressionAlgorithm::RLE:
-                compressor = std::make_unique<RLECompressor>();
-                break;
-
-            case CompressionAlgorithm::Huffman:
-                compressor = std::make_unique<HuffmanCompressor>();
-                break;
-        }
-
         return CompressionService{
             std::make_unique<Archiver>(),
-            std::move(compressor),
-            std::make_unique<FileWriter>(),
-            std::make_unique<FileReader>()
+            ioFactory.createWriter(),
+            ioFactory.createReader()
         };
     }
 
 void Application::handleCompress(const CompressionRequest& request) {
-    auto service = createService(request);
+    FileIOFactory ioFactory;
+    auto service = createService(ioFactory);
     service.compress(request);
 }
 
 void Application::handleDecompress(const CompressionRequest& request) {
-    auto service = createService(request);
+    FileIOFactory ioFactory;
+    auto service = createService(ioFactory);
     service.decompress(request);
 }
 
@@ -61,7 +44,7 @@ CompressionRequest Application::buildRequest() {
 
     std::cout << "Building request...\n";
 
-    return CompressionRequest{}; // Placeholder.
+    return CompressionRequestBuilder{}.build(); // Placeholder.
 }
 
 void Application::run() {

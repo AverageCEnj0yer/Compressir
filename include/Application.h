@@ -3,6 +3,9 @@
 
 #include "CompressionRequest.h"
 #include "CompressionService.h"
+#include "IOFactory.h"
+#include <string>
+#include <string_view>
 
 
 
@@ -11,7 +14,7 @@ private:
     std::string m_command{};
 
     CompressionService createService(
-        const CompressionRequest& request
+        const IIOFactory& ioFactory
     );
 
     void handleCompress(const CompressionRequest& request);

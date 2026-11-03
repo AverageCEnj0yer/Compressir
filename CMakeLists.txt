@@ -28,7 +28,9 @@ endfunction()
 add_source(main
     src/main.cpp
     src/Application.cpp
-    src/Application.cpp
+    src/AlgorithmCreator.cpp
+    src/CompressionRequestBuilder.cpp
+    src/IOFactory.cpp
     src/Archiver.cpp
     src/CompressionService.cpp
     src/FileReader.cpp
