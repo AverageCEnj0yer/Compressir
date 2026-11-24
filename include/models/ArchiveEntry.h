@@ -1,7 +1,7 @@
 #ifndef ARCHIVE_ENTRY_H
 #define ARCHIVE_ENTRY_H
 
-#include "CompressionRequest.h"
+#include "models/CompressionRequest.h"
 
 #include <filesystem>
 #include <vector>
@@ -14,11 +14,10 @@ struct ArchiveEntry {
     std::uint64_t originalSize{0};
 
     CompressionAlgorithm algorithm{CompressionAlgorithm::RLE};
+    bool hasChecksum{false};
+    bool isEncrypted{false};
 
     std::vector<std::byte> compressedData{};
-
-    // TODO: Add any additional metadata needed
-    // for storing and restoring individual files.
 };
 
 #endif

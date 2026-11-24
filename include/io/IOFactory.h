@@ -1,8 +1,8 @@
 #ifndef IO_FACTORY_H
 #define IO_FACTORY_H
 
-#include "IReader.h"
-#include "IWriter.h"
+#include "io/IReader.h"
+#include "io/IWriter.h"
 #include <map>
 #include <memory>
 

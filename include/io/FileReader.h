@@ -1,7 +1,7 @@
 #ifndef FILE_READER_H
 #define FILE_READER_H
 
-#include "IReader.h"
+#include "io/IReader.h"
 
 class FileReader : public IReader {
 public:

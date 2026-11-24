@@ -24,9 +24,9 @@ struct CompressionRequest {
     CompressionAlgorithm algorithm{CompressionAlgorithm::RLE};
     bool automaticAlgorithmSelection{true};
     std::uint8_t compressionLevel{1};
-
-    // TODO: Add archive format selection when needed.
-    // TODO: Validate the request before executing it.
+    bool enableChecksum{false};
+    bool enableEncryption{false};
+    std::uint8_t encryptionKey{0x5A};
 };
 
 #endif

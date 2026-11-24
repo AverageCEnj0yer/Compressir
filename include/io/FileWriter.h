@@ -1,7 +1,7 @@
 #ifndef FILE_WRITER_H
 #define FILE_WRITER_H
 
-#include "IWriter.h"
+#include "io/IWriter.h"
 
 class FileWriter : public IWriter {
 public:
