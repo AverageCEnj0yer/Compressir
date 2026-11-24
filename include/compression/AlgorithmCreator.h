@@ -1,7 +1,7 @@
 #ifndef ALGORITHM_CREATOR_H
 #define ALGORITHM_CREATOR_H
 
-#include "ICompressionAlgorithm.h"
+#include "compression/ICompressionAlgorithm.h"
 #include <memory>
 
 class AlgorithmCreator {

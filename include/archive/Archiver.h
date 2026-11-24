@@ -1,7 +1,7 @@
 #ifndef ARCHIVER_H
 #define ARCHIVER_H
 
-#include "ArchiveEntry.h"
+#include "models/ArchiveEntry.h"
 
 #include <vector>
 #include <cstddef>

@@ -1,9 +1,9 @@
-#ifndef HUFFMAN_COMPRESSOR_H
-#define HUFFMAN_COMPRESSOR_H
+#ifndef RLE_COMPRESSOR_H
+#define RLE_COMPRESSOR_H
 
-#include "ICompressionAlgorithm.h"
+#include "compression/ICompressionAlgorithm.h"
 
-class HuffmanCompressor : public ICompressionAlgorithm {
+class RLECompressor : public ICompressionAlgorithm {
 public:
     std::vector<std::byte> compress(
         const std::vector<std::byte>& data

@@ -1,6 +1,6 @@
-#include "AlgorithmCreator.h"
-#include "RLECompressor.h"
-#include "HuffmanCompressor.h"
+#include "compression/AlgorithmCreator.h"
+#include "compression/RLECompressor.h"
+#include "compression/HuffmanCompressor.h"
 #include <stdexcept>
 
 std::unique_ptr<ICompressionAlgorithm> RLECreator::createAlgorithm() const {

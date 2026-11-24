@@ -1,7 +1,7 @@
 #ifndef ICOMPRESSIONALGORITHM_H
 #define ICOMPRESSIONALGORITHM_H
 
-#include "CompressionRequest.h"
+#include "models/CompressionRequest.h"
 
 #include <vector>
 #include <cstddef>
