@@ -1,12 +1,13 @@
 #ifndef COMPRESSION_SERVICE_H
 #define COMPRESSION_SERVICE_H
 
-#include "CompressionRequest.h"
-#include "Archiver.h"
-#include <memory>
-#include "IReader.h"
-#include "IWriter.h"
+#include "archive/Archiver.h"
+#include "io/IReader.h"
+#include "io/IWriter.h"
+#include "models/CompressionRequest.h"
+#include "patterns/IArchiveItem.h"
 
+#include <memory>
 
 class CompressionService {
 private:
@@ -22,6 +23,7 @@ public:
     );
 
     void compress(const CompressionRequest& request);
+    void compress(const IArchiveItem& root, const CompressionRequest& request);
 
     void decompress(const CompressionRequest& request);
 };

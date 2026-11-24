@@ -1,7 +1,7 @@
 #ifndef COMPRESSION_REQUEST_BUILDER_H
 #define COMPRESSION_REQUEST_BUILDER_H
 
-#include "CompressionRequest.h"
+#include "models/CompressionRequest.h"
 
 class CompressionRequestBuilder {
 private:
@@ -14,6 +14,8 @@ public:
     CompressionRequestBuilder& algorithm(CompressionAlgorithm algorithm);
     CompressionRequestBuilder& automaticAlgorithmSelection();
     CompressionRequestBuilder& compressionLevel(std::uint8_t level);
+    CompressionRequestBuilder& checksum(bool enabled = true);
+    CompressionRequestBuilder& encryption(bool enabled = true, std::uint8_t key = 0x5A);
     CompressionRequest build() const;
 };
 

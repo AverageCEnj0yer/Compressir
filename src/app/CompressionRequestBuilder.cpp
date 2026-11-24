@@ -1,4 +1,4 @@
-#include "CompressionRequestBuilder.h"
+#include "app/CompressionRequestBuilder.h"
 
 CompressionRequestBuilder& CompressionRequestBuilder::operation(Operation operation) {
     m_request.operation = operation;
@@ -31,7 +31,17 @@ CompressionRequestBuilder& CompressionRequestBuilder::compressionLevel(std::uint
     return *this;
 }
 
+CompressionRequestBuilder& CompressionRequestBuilder::checksum(bool enabled) {
+    m_request.enableChecksum = enabled;
+    return *this;
+}
+
+CompressionRequestBuilder& CompressionRequestBuilder::encryption(bool enabled, std::uint8_t key) {
+    m_request.enableEncryption = enabled;
+    m_request.encryptionKey = key;
+    return *this;
+}
+
 CompressionRequest CompressionRequestBuilder::build() const {
-    // Request validation remains a TODO in CompressionRequest.
     return m_request;
 }
